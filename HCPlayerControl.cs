@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HPPlayerController : MonoBehaviour
+public class HCPlayerController : MonoBehaviour
 {
     private CharacterController controller;
     private enum SIDE {Left, Mid, Right}
