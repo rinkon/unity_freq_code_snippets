@@ -64,8 +64,20 @@ public void AdFailedToLoadCallback(){
 }
 
 public void RewardAdSuccessful(){
+    adLoadingView.SetActive(false);
     PlayerPrefs.SetString("lastAdShowTime", DateTime.Now.ToString());
-    Debug.Log("successful successful successful");
+    int coinCount = PlayerPrefs.GetInt("coins", 0);
+    coinCount += 1500;
+    PlayerPrefs.SetInt("coins", coinCount);
+    PlayerPrefs.Save();
+    mansionCanvasController.coinText.text = coinCount.ToString();
+    genericAlert.GetComponent<GenericAlertScript>().primaryText = "Congratulations!";
+    genericAlert.GetComponent<GenericAlertScript>().secondaryText = "You've earned 1500 coins!!";
+    AudioClip coinRattle = (AudioClip)Resources.Load("coinRattle");
+    GenericAlertScript genericAlertScript = genericAlert.GetComponent<GenericAlertScript>();
+    genericAlertScript.audioClip = coinRattle;
+    genericAlertScript.shouldPlay = true;
+    genericAlert.SetActive(true);
 }
 
 public void RewardAdNOTSuccessful(){
