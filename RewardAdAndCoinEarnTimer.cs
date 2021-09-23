@@ -71,10 +71,11 @@ public void RewardAdSuccessful(){
     PlayerPrefs.SetInt("coins", coinCount);
     PlayerPrefs.Save();
     mansionCanvasController.coinText.text = coinCount.ToString();
-    genericAlert.GetComponent<GenericAlertScript>().primaryText = "Congratulations!";
-    genericAlert.GetComponent<GenericAlertScript>().secondaryText = "You've earned 1500 coins!!";
-    AudioClip coinRattle = (AudioClip)Resources.Load("coinRattle");
+    
+    AudioClip coinRattle = (AudioClip)Resources.Load("positiveSound");
     GenericAlertScript genericAlertScript = genericAlert.GetComponent<GenericAlertScript>();
+    genericAlertScript.primaryText = "Congratulations!";
+    genericAlertScript.secondaryText = "You've earned 1500 coins!!";
     genericAlertScript.audioClip = coinRattle;
     genericAlertScript.shouldPlay = true;
     genericAlert.SetActive(true);
